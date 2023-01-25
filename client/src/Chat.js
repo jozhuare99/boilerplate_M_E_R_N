@@ -10,7 +10,7 @@ export default function Chat({socket, username, room}) {
         if(currentMessage !== ""){
             const messageData = {
                 room: room ,
-                 username: username,
+                username: username,
                 message: currentMessage, 
                 time: chatTime.getHours()+":"+ chatTime.getMinutes()
             }
@@ -30,12 +30,32 @@ export default function Chat({socket, username, room}) {
         <p>LiveChat</p>
       </div>
       <div className="chat-body">
-        
+        <ScrollToBottom className='message-container'>
+            {messageList.map((messageContent)=>{
+                return(
+                <div className="message" id={username === messageContent.username ? "you": "other"}>
+                    <div>
+                        <div className='message-content'>
+                            <p>{messageContent.message}</p>
+                        </div>
+                        <div className='message-meta'>
+                            <p id='time'>{messageContent.time}</p>
+                            <p id='author'>{messageContent.username}</p>
+                        </div>
+                    </div>
+                </div>
+                )
+            })}
+        </ScrollToBottom>
       </div>
       <div className="chat-footer"></div>
       <input type="text" placeholder ="hey .." onChange={(event)=>{
         setCurrentMessage(event.target.value)
-      }}/>
+      }}
+      onKeyPress={(event)=>{
+        event.key === "Enter" && sendMessage();
+      }}
+      />
       <button onClick={sendMessage}>&#9658;</button>
     </div>
   )
