@@ -1,5 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './Navbar/Header';
 import Chat  from './Chat.js';
 import io from 'socket.io-client'
 import { useState } from 'react';
@@ -18,9 +18,7 @@ function App() {
   }
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Join the Chat</h1>
-      </header>
+      <Header />
      {!showChat ? ( 
       <div className='joinChatContainer'>
         <h3> Join a Chat</h3>

@@ -16,12 +16,15 @@ export default function Chat({socket, username, room}) {
             }
             await socket.emit("send_message", messageData)
             setMessageList((list)=> [...list, messageData]);
+            console.log(setMessageList);
             setCurrentMessage("");
         }
      }
      useEffect(()=>{
         socket.on('received_message',(data)=>{
-            setMessageList((list)=>{return [...list, data]})
+          console.log(data);
+          // console.log(setMessageList);
+            // setMessageList((list)=>[list, data])
         })
      },[socket])
   return (
@@ -33,8 +36,9 @@ export default function Chat({socket, username, room}) {
         <ScrollToBottom className='message-container'>
             {messageList.map((messageContent)=>{
                 return(
-                <div className="message" id={username === messageContent.username ? "you": "other"}>
-                    <div>
+                <div key={messageContent.time} className="message"
+                 id={username === messageContent.username ? "you": "other"}>
+             
                         <div className='message-content'>
                             <p>{messageContent.message}</p>
                         </div>
@@ -43,7 +47,7 @@ export default function Chat({socket, username, room}) {
                             <p id='author'>{messageContent.username}</p>
                         </div>
                     </div>
-                </div>
+               
                 )
             })}
         </ScrollToBottom>
