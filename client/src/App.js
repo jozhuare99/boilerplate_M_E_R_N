@@ -1,6 +1,7 @@
 import './App.css';
-import Header from './Navbar/Header';
+import Header from './Header/Header.jsx';
 import Chat  from './Chat.js';
+import Footer from './Footer/Index';
 import io from 'socket.io-client'
 import { useState } from 'react';
 
@@ -29,6 +30,7 @@ function App() {
      ): (
       <Chat socket={socket} username={username} room={room}/>
      )}
+     <Footer />
     </div>
   );
 }
