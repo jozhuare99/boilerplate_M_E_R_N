@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import logo from '../logo.svg'
 import { Container, Row, Col, Nav, Form, Button} from 'react-bootstrap'
+import * as Icon from 'react-bootstrap-icons';
+
+const ThisYear = new Date().getFullYear();
 
 export default function Index() {
-    const ThisYear = useState(new Date(Date.now()).getFullYear())
   return (
    <footer className='pt-5'>
     <Container fluid>
@@ -87,7 +89,7 @@ export default function Index() {
     <div className='d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top'>
         <p className="">&copy; {ThisYear} React, Inc, All rights reserved.</p>
         <ul className='list-unstyled d-flex'>
-            <li className=''></li>
+            <li><Icon.Facebook size={30} title='fb' color='royalblue' /></li>
         </ul>
     </div>
     </Container>
