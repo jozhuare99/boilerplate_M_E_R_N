@@ -2,7 +2,7 @@ import './App.css';
 import Header from './Header/Header.jsx';
 import TicTacToe from './Pages/TicTacToe.jsx';
 import Chat  from './Chat.js';
-import Footer from './Footer/Index';
+import Footer from './Footer/Footer.jsx';
 import io from 'socket.io-client'
 import { useState } from 'react';
 
